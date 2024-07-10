@@ -12,13 +12,13 @@ YupiTienda es una tienda de bazar en línea desarrollada con una combinación de
 
 ## Tecnologías Utilizadas
 
-- **React:** Biblioteca para construir interfaces de usuario.
-- **TypeScript:** Superconjunto de JavaScript que agrega tipos estáticos.
-- **Tailwind CSS:** Framework CSS utilitario para un diseño rápido y eficiente.
-- **Zustand:** Pequeña y rápida biblioteca de manejo de estado para React.
-- **Zod:** Biblioteca de validación de esquemas para TypeScript.
-- **React Hook Form:** Biblioteca de formularios para React.
-- **Material UI:** Framework de componentes de UI basado en Material Design.
+- **React:**
+- **TypeScript:**
+- **Tailwind CSS:**
+- **Zustand:**
+- **Zod:**
+- **React Hook Form:**
+- **Material UI:**
 
 ## Instalación
 
