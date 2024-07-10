@@ -1,6 +1,7 @@
 # YupiTienda 
 
 Preview |  https://668e071a6c695756a7109fe0--meek-chaja-700a45.netlify.app/carrito
+
 YupiTienda es una tienda de bazar en línea desarrollada con una combinación de tecnologías modernas para crear una experiencia de usuario rápida, eficiente y atractiva. Este proyecto utiliza React, TypeScript, Tailwind CSS, Zustand, Zod, React Hook Form y Material UI.
 
 ## Características
