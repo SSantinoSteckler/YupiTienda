@@ -12,13 +12,13 @@ YupiTienda es una tienda de bazar en línea desarrollada con una combinación de
 
 ## Tecnologías Utilizadas
 
-- **React:**
-- **TypeScript:**
-- **Tailwind CSS:**
-- **Zustand:**
-- **Zod:**
-- **React Hook Form:**
-- **Material UI:**
+- **React**
+- **TypeScript**
+- **Tailwind CSS**
+- **Zustand**
+- **Zod**
+- **React Hook Form**
+- **Material UI**
 
 ## Instalación
 
