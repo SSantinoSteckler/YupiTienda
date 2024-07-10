@@ -1,5 +1,3 @@
-// StarRating.tsx
-
 import React from 'react';
 
 interface StarRatingProps {
@@ -15,18 +13,18 @@ export const StarRating: React.FC<StarRatingProps> = ({
   for (let i = 1; i <= maxRating; i++) {
     if (i <= rating) {
       stars.push(
-        <span key={i} className='text-yellow-400 text-2xl lg:text-4xl'>
+        <span key={i} className='text-yellow-400 text-base lg:text-2xl'>
           ★
         </span>
       );
     } else {
       stars.push(
-        <span key={i} className='text-gray-300 text-2xl  lg:text-4xl'>
+        <span key={i} className='text-gray-300 text-base lg:text-2xl'>
           ★
         </span>
       );
     }
   }
 
-  return <div>{stars}</div>;
+  return <div className='flex'>{stars}</div>;
 };

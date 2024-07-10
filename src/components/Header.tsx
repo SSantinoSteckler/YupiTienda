@@ -13,7 +13,7 @@ export const Header = () => {
   return (
     <header className='bg-black py-6 md:py-8 lg:py-11 text-white flex justify-between gap-4 md:gap-6 lg:gap-9 px-4 md:px-6 lg:px-8 items-center'>
       <div className='flex items-center flex-row-reverse gap-2'>
-        <h2 className='text-3xl md:text-4xl lg:text-5xl font-bold'>
+        <h2 className='text-3xl md:text-4xl lg:text-4xl font-bold'>
           YupiTienda
         </h2>
         <img
@@ -24,7 +24,7 @@ export const Header = () => {
       </div>
       <div className='hidden lg:block'>
         <nav>
-          <ul className='flex gap-4 md:gap-5 lg:gap-6 text-xl md:text-2xl lg:text-2xl items-center'>
+          <ul className='flex gap-4 md:gap-5 lg:gap-6 text-xl md:text-2xl lg:text-xl items-center'>
             <li>
               <Link to={'/'}>Home</Link>
             </li>
@@ -55,7 +55,7 @@ export const Header = () => {
             />
           </div>
           <nav>
-            <ul className='flex flex-col gap-6 text-xl md:text-2xl lg:text-2xl items-center'>
+            <ul className='flex flex-col gap-6 text-xl md:text-2xl lg:text-xl items-center'>
               <li onClick={handleClick}>
                 <Link to={'/'}>Home</Link>
               </li>

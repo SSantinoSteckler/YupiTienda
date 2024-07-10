@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 .sk-circle {
-  margin: 100px auto;
+  margin: 50px auto;
   width: 110px;
   height: 110px;
   position: relative;
@@ -151,6 +151,19 @@
   40% {
     -webkit-transform: scale(1);
     transform: scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .sk-circle {
+    margin: 30px auto;
+    width: 80px;
+    height: 80px;
+  }
+
+  .sk-circle .sk-child:before {
+    width: 20%;
+    height: 20%;
   }
 }
 

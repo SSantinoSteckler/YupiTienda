@@ -20,11 +20,13 @@ export const CardProduct: React.FC<CardProductProps> = ({ elem }) => {
       <div className='p-5 flex flex-col gap-1 rounded-md border-2 justify-between'>
         <img src={elem.thumbnail} alt={elem.title} className='w-full' />
         <div className='flex flex-col justify-between items-start'>
-          <h3 className='text-lg truncate w-full'>{elem.title}</h3>
-          <p className='text-lg'>${elem.price}</p>
+          <h3 className='text-base md:text-lg lg:text-base truncate w-full'>
+            {elem.title}
+          </h3>
+          <p className='text-base'>${elem.price}</p>
         </div>
 
-        <p className='text-gray-500'>{elem.category}</p>
+        <p className='text-gray-500 text-base'>{elem.category}</p>
         <div className='flex items-center gap-2'>
           <StarRating rating={elem.rating ?? 0} maxRating={5} />
           <p className='text-base mt-1'>{elem.rating}</p>

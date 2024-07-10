@@ -19,17 +19,17 @@ export const CategoryPage = () => {
   return (
     <section className='p-4 lg:p-8 min-h-screen mt-16 mb-24'>
       <button
-        className=' lg:hidden w-full p-3 lg:p-7 rounded-lg bg-black hover:bg-slate-800 text-white mb-5 flex items-center flex-row text-1xl md:text-2xl'
+        className='lg:hidden w-full p-3 lg:p-7 rounded-lg bg-black hover:bg-slate-800 text-white mb-5 flex items-center justify-center text-1xl'
         onClick={handleClickOnFilters}
       >
         Filters
         <img
           src='/arrowBottom.png'
           alt='arrow-bottom'
-          className='max-w-[20px] lg:max-w-[35px]'
+          className='max-w-[20px] lg:max-w-[35px] ml-2'
         />
       </button>
-      <div className='flex lg:flex-row gap-4 justify-center '>
+      <div className='flex lg:flex-row gap-4 justify-center'>
         {menuFiltersOn && (
           <AsideComponent
             filters={filters}
@@ -40,17 +40,14 @@ export const CategoryPage = () => {
           ></AsideComponent>
         )}
 
-        <div
-          className='grid grid-cols-1  lg:grid-cols-2  xl:grid-cols-3 2xl:grid-cols-4 gap-3 border-2 p-4 overflow-y-auto max-w-[1600px] w-full h-screen
-         '
-        >
+        <div className='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-3 border-2 p-4 overflow-y-auto max-w-[1600px] w-full h-screen'>
           {iterate && valueProductExist ? (
             filteredProducts.map((elem) => (
               <CardProduct key={elem.id} elem={elem}></CardProduct>
             ))
           ) : (
-            <div className='w-full h-full justify-center items-center relative'>
-              <p className='text-black text-lg sm:text-2xl lg:text-4xl'>
+            <div className='w-full h-full flex items-center justify-center'>
+              <p className='text-lg sm:text-xl lg:text-2xl text-center text-black'>
                 No Hay Productos
               </p>
             </div>

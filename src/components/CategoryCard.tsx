@@ -16,9 +16,9 @@ export const CategoryCard = ({ elem }: ElemCategoryCard) => {
   return (
     <div
       onClick={handleClick}
-      className='border-4 p-5 flex justify-center items-center w-full shadow-2xl cursor-pointer h-[300px]  hover:bg-black hover:scale-110 hover:text-white transition font-semibold text-black bg-white hover:border-white hover:border-8'
+      className='border-4 p-5 flex justify-center items-center w-full shadow-2xl cursor-pointer h-[250px] hover:bg-black hover:scale-110 hover:text-white transition font-semibold text-black bg-white hover:border-white hover:border-8'
     >
-      <h3 className='text-xl md:text-2xl text-center'>{elem.name}</h3>
+      <h3 className='text-xl md:text-xl lg:text-lg text-center'>{elem.name}</h3>
     </div>
   );
 };

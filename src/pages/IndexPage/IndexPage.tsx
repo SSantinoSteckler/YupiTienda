@@ -20,10 +20,10 @@ export const IndexPage = () => {
         <ImageCarousel />
       </section>
 
-      <section className='flex justify-center p-6 bg-cartfondo'>
+      <section className='flex justify-center p-6 bg-black'>
         <div className='w-full 2xl:w-3/4 my-28 flex flex-col gap-7'>
           <div>
-            <h2 className='text-3xl md:text-4xl lg:text-5xl p-1 font-semibold text-white bg-black inline'>
+            <h2 className='text-3xl md:text-4xl lg:text-4xl p-1 font-semibold text-white bg-black inline'>
               Collections
             </h2>
           </div>
@@ -48,9 +48,9 @@ export const IndexPage = () => {
       </section>
 
       <section className='min-h-screen flex flex-col justify-center items-center p-5 my-28'>
-        <div className='gap-2 w-full max-w-[1600px]'>
+        <div className='gap-2 w-full max-w-[1300px]'>
           <div className='my-8'>
-            <h2 className='text-3xl md:text-4xl lg:text-5xl p-1 my-6 text-white bg-black inline font-semibold'>
+            <h2 className='text-3xl md:text-4xl lg:text-4xl p-1 my-6 text-white bg-black inline font-semibold'>
               Top Sellers
             </h2>
           </div>

@@ -7,13 +7,14 @@ import { useAppStore } from '../stores/useAppStore';
 const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
   '& .MuiBadge-badge': {
     border: `2px solid ${theme.palette.background.paper}`,
-    fontSize: '1rem',
-    padding: '8px',
+    fontSize: '0.7rem',
+    padding: '4px 6px',
   },
 }));
+
 const ShoppingCartIconStyled = styled(ShoppingCartIcon)({
   color: 'white',
-  fontSize: '2rem',
+  fontSize: '1.6rem',
 });
 
 export const CustomizedBadges = () => {

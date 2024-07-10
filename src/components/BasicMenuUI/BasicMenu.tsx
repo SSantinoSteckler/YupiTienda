@@ -28,7 +28,7 @@ export default function BasicMenu({ closeModal }: BasicMenuProps) {
         sx={{
           fontFamily: 'poppins',
           color: 'white',
-          fontSize: { xs: '18px', sm: '24px' },
+          fontSize: { xs: '18px', sm: '22px', lg: '20px' },
           textTransform: 'capitalize',
           backgroundColor: 'transparent',
           '&:hover': {
@@ -64,7 +64,7 @@ export default function BasicMenu({ closeModal }: BasicMenuProps) {
               key={elem.slug}
               onClick={() => handleClickNav(elem)}
               sx={{
-                fontSize: { xs: '0.875rem', sm: '1rem' },
+                fontSize: { xs: '0.875rem', sm: '0.9375rem', lg: '0.875rem' },
                 textTransform: 'capitalize',
                 padding: { xs: '0.5rem 1rem', sm: '0.75rem 1.5rem' },
                 fontFamily: 'poppins',

@@ -14,9 +14,9 @@ export const CarritoPage = () => {
   } = useCarritoPage();
 
   return (
-    <section className='p-4 flex justify-center bg-cartfondo bg-cover relative'>
-      <div className='max-w-[1100px] bg-white w-full flex flex-col md:flex-row gap-2 border-2 rounded-md p-4 shadow-xl my-28'>
-        <div className='w-full md:max-w-[60%] bg-black p-4 overflow-y-auto md:overflow-y-scroll h-[600px] md:h-[970px]'>
+    <section className='p-4 flex justify-center bg-slate-900  bg-cover relative'>
+      <div className='max-w-[1100px] bg-white w-full flex flex-col md:flex-row gap-2 border-2 rounded-md p-3 md:p-4 shadow-xl my-10 md:my-28'>
+        <div className='w-full md:max-w-[60%] bg-black p-3 md:p-4 overflow-y-auto md:overflow-y-scroll h-[500px] md:h-[800px]'>
           {productCart.length ? (
             <div className='flex flex-col gap-3'>
               {productCart.map((elem) => (
@@ -25,20 +25,20 @@ export const CarritoPage = () => {
             </div>
           ) : (
             <div className='flex items-center justify-center h-full'>
-              <p className='text-white text-2xl md:text-3xl flex items-center gap-1'>
+              <p className='text-white text-base md:text-lg flex items-center gap-1'>
                 No products in cart
                 <img
                   src='/shopping-cart.png'
                   alt='cart'
-                  className='max-w-[40px]'
+                  className='max-w-[40px] md:max-w-[50px]'
                 />
               </p>
             </div>
           )}
         </div>
-        <div className='w-full md:max-w-[40%] p-4 flex flex-col justify-between'>
-          <div className='flex flex-col gap-4 h-full'>
-            <div className='overflow-y-auto border-2 p-2 text-[10px] md:text-[12px] h-[400px] md:h-[600px]'>
+        <div className='w-full md:max-w-[40%] p-3 md:p-4 flex flex-col justify-between'>
+          <div className='flex flex-col gap-3 h-full'>
+            <div className='overflow-y-auto border-2 p-2 md:p-3 text-sm md:text-[11px] h-[300px] md:h-[500px]'>
               <p className='text-black'>
                 Terms and Conditions of Sale By making a purchase at YupiTienda,
                 you agree to the following terms and conditions: General
@@ -79,13 +79,13 @@ export const CarritoPage = () => {
             </div>
             <div className='flex gap-2 justify-end'>
               <button
-                className='bg-black text-white w-full p-2 md:p-4 rounded-md hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed text-xs md:text-base'
+                className='bg-black text-white w-full p-2 md:p-3 rounded-md hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed text-xs md:text-sm'
                 onClick={handleClickReturn}
               >
                 Return Home
               </button>
               <button
-                className={`bg-black text-white w-full p-2 md:p-4 rounded-md hover:bg-gray-800 text-xs md:text-base ${
+                className={`bg-black text-white w-full p-2 md:p-3 rounded-md hover:bg-gray-800 text-xs md:text-sm ${
                   productCart.length === 0
                     ? 'opacity-50 cursor-not-allowed'
                     : ''
@@ -98,37 +98,37 @@ export const CarritoPage = () => {
             </div>
           </div>
 
-          <div className='flex flex-col items-center mt-4'>
+          <div className='flex flex-col items-center mt-3'>
             <div className='flex gap-2'>
               <img
                 src='/visa.png'
                 alt='visa'
-                className='max-w-[50px] md:max-w-[70px]'
+                className='max-w-[50px] md:max-w-[60px]'
               />
               <img
                 src='/american-express.png'
                 alt='american express'
-                className='max-w-[50px] md:max-w-[70px]'
+                className='max-w-[50px] md:max-w-[60px]'
               />
               <img
                 src='/internet.png'
                 alt='internet'
-                className='max-w-[50px] md:max-w-[70px]'
+                className='max-w-[50px] md:max-w-[60px]'
               />
               <img
                 src='/paypal.png'
                 alt='paypal'
-                className='max-w-[50px] md:max-w-[70px]'
+                className='max-w-[50px] md:max-w-[60px]'
               />
             </div>
-            <div className='flex justify-between w-full p-4'>
-              <span className='text-xl md:text-2xl'>Total:</span>
-              <span className='text-xl md:text-2xl font-bold'>
+            <div className='flex justify-between w-full p-2 md:p-3'>
+              <span className='text-sm md:text-base'>Total:</span>
+              <span className='text-sm md:text-base font-bold'>
                 ${total?.toFixed(2)}
               </span>
             </div>
             <button
-              className={`bg-black text-white p-4 md:p-5 rounded-md w-full flex items-center justify-center gap-1 hover:bg-green-700 text-xs md:text-base ${
+              className={`bg-black text-white p-3 md:p-4 rounded-md w-full flex items-center justify-center gap-1 hover:bg-green-700 text-xs md:text-sm ${
                 productCart.length === 0 ? 'opacity-50 cursor-not-allowed' : ''
               }`}
               onClick={handleClickModalForm}
@@ -138,7 +138,7 @@ export const CarritoPage = () => {
               <img
                 src='/shopping-bag.png'
                 alt='shopping bag'
-                className='max-w-[20px] md:max-w-[30px] hover:text-black'
+                className='max-w-[20px] md:max-w-[25px] hover:text-black'
               />
             </button>
             {formState && <ModalConfirmForm setFormState={setFormState} />}

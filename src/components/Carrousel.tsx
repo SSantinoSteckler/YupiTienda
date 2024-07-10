@@ -28,7 +28,7 @@ export const ImageCarousel = () => {
               />
             </div>
             <div className='absolute inset-0 flex items-center justify-center text-white text-center'>
-              <h2 className='m-6 text-2xl md:text-4xl lg:text-7xl font-bold'>
+              <h2 className='m-6 text-2xl md:text-4xl lg:text-5xl font-bold'>
                 {index === 0
                   ? 'Los mejores productos en YupiTienda!'
                   : 'El mejor Bazar de la ciudad'}

@@ -17,7 +17,7 @@ export const ReviewComponent = ({ elem }: ElemReviewType) => {
           />
         </div>
         <div className='flex flex-col'>
-          <span className='font-bold text-sm md:text-base lg:text-lg'>
+          <span className='font-bold text-xs md:text-sm lg:text-base'>
             {elem.reviewerName}
           </span>
           <span className='elipsis max-w-[230px] truncate text-xs md:text-sm lg:text-base'>
@@ -27,7 +27,7 @@ export const ReviewComponent = ({ elem }: ElemReviewType) => {
       </div>
       <div className='flex flex-col gap-1'>
         <StarRating rating={elem.rating} maxRating={6}></StarRating>
-        <p className='text-sm md:text-base lg:text-lg'>{elem.comment}</p>
+        <p className='text-xs md:text-sm lg:text-base'>{elem.comment}</p>
       </div>
     </div>
   );
