@@ -1,37 +1,21 @@
-import * as React from 'react';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import { useAppStore } from '../stores/useAppStore';
-import { useNavigate } from 'react-router-dom';
-import { CategoryName } from '../types';
+import { useBasicMenu } from './useBasicMenu';
 
-type BasicMenuProps = {
+export type BasicMenuProps = {
   closeModal: () => void;
 };
 
 export default function BasicMenu({ closeModal }: BasicMenuProps) {
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const categoryName = useAppStore((state) => state.productsCategoryName);
-  const getProductsByCategory = useAppStore(
-    (state) => state.getProductsByCategory
-  );
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const navigate = useNavigate();
-
-  const handleClickNav = async (category: CategoryName) => {
-    await getProductsByCategory(category);
-    navigate(`/category/${category.slug}`);
-    handleClose();
-    closeModal();
-  };
+  const {
+    handleClick,
+    handleClickNav,
+    handleClose,
+    categoryName,
+    open,
+    anchorEl,
+  } = useBasicMenu({ closeModal });
 
   return (
     <div>
@@ -65,7 +49,7 @@ export default function BasicMenu({ closeModal }: BasicMenuProps) {
         }}
         PaperProps={{
           sx: {
-            maxHeight: '80vh', // Limitando la altura máxima del menú para permitir el scroll
+            maxHeight: '80vh',
             width: { xs: '100%', sm: 'auto' },
             maxWidth: '400px',
             backgroundColor: 'white',

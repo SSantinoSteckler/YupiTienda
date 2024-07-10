@@ -1,76 +1,31 @@
-import { CardCartProduct } from '../components/CardCartProduct';
-import { ModalConfirmForm } from '../components/ModalConfirmForm';
-import { useAppStore } from '../stores/useAppStore';
-import { useEffect, useMemo, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { CardCartProduct } from '../../components/CardCartProduct/CardCartProduct';
+import { ModalConfirmForm } from '../../components/ModalConfirmForm/ModalConfirmForm';
+import { useCarritoPage } from './useCarritoPage';
 
 export const CarritoPage = () => {
-  const getProductsByCategory = useAppStore(
-    (state) => state.getProductsByCategory
-  );
-  const getCategoryNames = useAppStore(
-    (state) => state.getProductsCategoryName
-  );
-
-  const productCart = useAppStore((state) => state.productCart);
-
-  const emptyCart = useAppStore((state) => state.emptyCart);
-
-  const navigate = useNavigate();
-
-  const handleClickReturn = () => {
-    navigate(`/`);
-  };
-
-  const handleClickEmpty = () => {
-    if (productCart) {
-      emptyCart();
-    }
-  };
-
-  const [formState, setFormState] = useState(false);
-  const handleClickModalForm = () => {
-    if (productCart) {
-      setFormState(true);
-    }
-  };
-
-  const [buttonDisabled, setButtonDisabled] = useState(true);
-  useEffect(() => {
-    setButtonDisabled(productCart.length === 0);
-    window.scrollTo(0, 0);
-  }, [productCart]);
-
-  useEffect(() => {
-    const fetchInitialData = async () => {
-      await getCategoryNames();
-    };
-
-    fetchInitialData();
-  }, [getCategoryNames, getProductsByCategory]);
-
-  const total = useMemo(() => {
-    if (productCart) {
-      return productCart.reduce(
-        (acc, elem) => acc + (elem?.amount ?? 0) * elem.price,
-        0
-      );
-    }
-  }, [productCart]);
+  const {
+    total,
+    formState,
+    handleClickModalForm,
+    handleClickReturn,
+    handleClickEmpty,
+    setFormState,
+    productCart,
+  } = useCarritoPage();
 
   return (
-    <section className='p-4 flex justify-center bg-cartfondo bg-cover relative '>
-      <div className='max-w-[1100px] bg-white w-full flex flex-row gap-2 border-2 rounded-md p-4 shadow-xl my-28'>
-        <div className='grid grid-cols-1 gap-4 max-w-[60%] w-full  bg-black p-4  overflow-y-scroll h-[970px]'>
+    <section className='p-4 flex justify-center bg-cartfondo bg-cover relative'>
+      <div className='max-w-[1100px] bg-white w-full flex flex-col md:flex-row gap-2 border-2 rounded-md p-4 shadow-xl my-28'>
+        <div className='w-full md:max-w-[60%] bg-black p-4 overflow-y-auto md:overflow-y-scroll h-[600px] md:h-[970px]'>
           {productCart.length ? (
-            <div className='flex flex-col gap-3 '>
+            <div className='flex flex-col gap-3'>
               {productCart.map((elem) => (
-                <CardCartProduct key={elem.id} elem={elem}></CardCartProduct>
+                <CardCartProduct key={elem.id} elem={elem} />
               ))}
             </div>
           ) : (
-            <div>
-              <p className='text-white text-3xl text-center flex flex-row-reverse items-center gap-1 justify-center m-5'>
+            <div className='flex items-center justify-center h-full'>
+              <p className='text-white text-2xl md:text-3xl flex items-center gap-1'>
                 No products in cart
                 <img
                   src='/shopping-cart.png'
@@ -81,11 +36,10 @@ export const CarritoPage = () => {
             </div>
           )}
         </div>
-        <div className='flex items-end justify-between max-w-[60%] w-full p-2 flex-col'>
-          <div className='flex flex-col justify-end gap-1 w-full'>
-            <h3 className='font-bold text-[17px]'>Terminos y Condiciones</h3>
-            <div className=' overflow-y-auto h-[400px] border-2 p-2 text-[12px]'>
-              <p>
+        <div className='w-full md:max-w-[40%] p-4 flex flex-col justify-between'>
+          <div className='flex flex-col gap-4 h-full'>
+            <div className='overflow-y-auto border-2 p-2 text-[10px] md:text-[12px] h-[400px] md:h-[600px]'>
+              <p className='text-black'>
                 Terms and Conditions of Sale By making a purchase at YupiTienda,
                 you agree to the following terms and conditions: General
                 Conditions The products and services offered are subject to
@@ -123,57 +77,71 @@ export const CarritoPage = () => {
                 understood, and accepted these terms and conditions.
               </p>
             </div>
-            <div className='flex gap-2 justify-end mt-3'>
+            <div className='flex gap-2 justify-end'>
               <button
-                className='bg-black text-white w-full p-4 rounded-md hover:bg-gray-800 transition-all'
+                className='bg-black text-white w-full p-2 md:p-4 rounded-md hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed text-xs md:text-base'
                 onClick={handleClickReturn}
               >
                 Return Home
               </button>
               <button
-                className='bg-black text-white w-full p-4 rounded-md hover:bg-gray-800 transition-all disabled:opacity-15 disabled:cursor-default disabled:hover:bg-black'
+                className={`bg-black text-white w-full p-2 md:p-4 rounded-md hover:bg-gray-800 text-xs md:text-base ${
+                  productCart.length === 0
+                    ? 'opacity-50 cursor-not-allowed'
+                    : ''
+                }`}
                 onClick={handleClickEmpty}
-                disabled={buttonDisabled}
+                disabled={productCart.length === 0}
               >
                 Empty Cart
               </button>
             </div>
           </div>
 
-          <div className='flex w-full justify-end flex-col'>
-            <div className='flex flex-col p-3 justify-end gap-2 cursor-pointer'>
-              <img src='/visa.png' alt='tarjeta1' className='max-w-[70px]' />
+          <div className='flex flex-col items-center mt-4'>
+            <div className='flex gap-2'>
+              <img
+                src='/visa.png'
+                alt='visa'
+                className='max-w-[50px] md:max-w-[70px]'
+              />
               <img
                 src='/american-express.png'
-                alt='tarjeta2'
-                className='max-w-[70px]'
+                alt='american express'
+                className='max-w-[50px] md:max-w-[70px]'
               />
               <img
                 src='/internet.png'
-                alt='tarjeta3'
-                className='max-w-[70px]'
+                alt='internet'
+                className='max-w-[50px] md:max-w-[70px]'
               />
-              <img src='/paypal.png' alt='tarjeta3' className='max-w-[70px]' />
+              <img
+                src='/paypal.png'
+                alt='paypal'
+                className='max-w-[50px] md:max-w-[70px]'
+              />
             </div>
-            <div className='flex flex-row justify-between  p-4'>
-              <span className='text-2xl'>Total:</span>
-              <span className='text-2xl font-bold'>${total?.toFixed(2)}</span>
+            <div className='flex justify-between w-full p-4'>
+              <span className='text-xl md:text-2xl'>Total:</span>
+              <span className='text-xl md:text-2xl font-bold'>
+                ${total?.toFixed(2)}
+              </span>
             </div>
             <button
-              className='bg-black text-white p-5 cursor-pointer disabled:opacity-15 disabled:cursor-default disabled:hover:bg-black rounded-md w-full flex flex-row justify-center items-center gap-1 transition-all hover:bg-green-700'
+              className={`bg-black text-white p-4 md:p-5 rounded-md w-full flex items-center justify-center gap-1 hover:bg-green-700 text-xs md:text-base ${
+                productCart.length === 0 ? 'opacity-50 cursor-not-allowed' : ''
+              }`}
               onClick={handleClickModalForm}
-              disabled={buttonDisabled}
+              disabled={productCart.length === 0}
             >
               Buy Products
               <img
                 src='/shopping-bag.png'
-                alt='bag'
-                className='max-w-[30px] hover:text-black'
+                alt='shopping bag'
+                className='max-w-[20px] md:max-w-[30px] hover:text-black'
               />
             </button>
-            {formState && (
-              <ModalConfirmForm setFormState={setFormState}></ModalConfirmForm>
-            )}
+            {formState && <ModalConfirmForm setFormState={setFormState} />}
           </div>
         </div>
       </div>

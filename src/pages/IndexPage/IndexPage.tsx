@@ -1,67 +1,14 @@
-import { useEffect, useState } from 'react';
-import { ImageCarousel } from '../components/Carrousel';
-import { useAppStore } from '../stores/useAppStore';
-import { CardProduct } from '../components/CardProduct';
-import { CategoryCard } from '../components/CategoryCard';
-import { Loader } from '../components/Loader';
+import { useIndexPage } from './useIndexPage';
+import { ImageCarousel } from '../../components/Carrousel';
+import { CardProduct } from '../../components/CardProduct';
+import { CategoryCard } from '../../components/CategoryCard';
+import { Loader } from '../../components/Loader';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 export const IndexPage = () => {
-  const getProducts = useAppStore((state) => state.getProducts);
-  const ProductsAll = useAppStore((state) => state.productsAll);
-  const getCategoryNames = useAppStore(
-    (state) => state.getProductsCategoryName
-  );
-  const CategoryNames = useAppStore((state) => state.productsCategoryName);
-
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      await getCategoryNames();
-      await getProducts();
-      setLoading(false);
-    };
-
-    fetchData();
-  }, [getProducts, getCategoryNames]);
-
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 2,
-    arrows: true,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
+  const { loading, settings, CategoryNames, ProductsAll } = useIndexPage();
 
   if (loading) {
     return <Loader />;

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import BasicMenu from './BasicMenu';
+import BasicMenu from './BasicMenuUI/BasicMenu';
 import { CustomizedBadges } from './CustomizedBadges';
 
 export const Header = () => {

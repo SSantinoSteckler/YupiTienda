@@ -1,47 +1,16 @@
 import Slider from 'react-slick';
-import { CardProduct } from './CardProduct';
-import { Product } from '../types';
+import { CardProduct } from '../CardProduct';
+import { Product } from '../../types';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { useCarrouselCardsProducts } from './useCarrouselCardsProducts';
 
 type CarouselProductProps = {
   products: Product[];
 };
 
 export const CarouselProduct = ({ products }: CarouselProductProps) => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 5,
-    slidesToScroll: 4,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
+  const { settings } = useCarrouselCardsProducts();
 
   return (
     <div className='w-full max-w-[1500px] mx-auto my-8 '>

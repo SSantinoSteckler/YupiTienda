@@ -13,7 +13,7 @@ const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
 }));
 const ShoppingCartIconStyled = styled(ShoppingCartIcon)({
   color: 'white',
-  fontSize: '2.3rem',
+  fontSize: '2rem',
 });
 
 export const CustomizedBadges = () => {
